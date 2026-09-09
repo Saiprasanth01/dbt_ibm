@@ -47,8 +47,8 @@ models:
     columns:
       - name: total_price
         data_tests:
-          - ordertest:
+          - order_value:
               arguments:
-                values: 880
+                val: 1000
               config:
                 store_failures: true

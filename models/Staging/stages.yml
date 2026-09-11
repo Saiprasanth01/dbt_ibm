@@ -1,12 +1,15 @@
 
 models:
   - name: nations
+    description: Table for nation's data
     columns:
       - name: nation_id
+        description: Primary key for this table
         data_tests:
           - unique
           - not_null
-
+      - name: region_id
+        description: Foreign key for this table
   - name: regions
     columns:
       - name: name

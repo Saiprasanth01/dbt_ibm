@@ -5,6 +5,11 @@ sources:
     tables:
       - name: regions
       - name: nations
+        columns:
+          - name: n_nationkey
+            data_tests:
+              - unique
+              - not_null
       - name: customers
       - name: orders
         config: 
@@ -12,8 +17,10 @@ sources:
             warn_after: {count: 6, period: day}
             error_after: {count: 12, period: day}
           loaded_at_field: o_orderdate::timestamp_ntz   
-      - name: lineitems    
+      - name: lineitems
+        description: This is raw data     
       - name: parts
+        description: This is raw data 
       - name: suppliers
       - name: partsupps
 

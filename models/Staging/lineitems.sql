@@ -38,14 +38,6 @@
 -- )
 
 -- select * from changed
-WITH source AS (
-
-    SELECT * 
-    FROM {{ source('src', 'lineitems') }}
-
-),
-
-changed AS (
 
     SELECT
         l_orderkey AS order_id,
@@ -73,7 +65,4 @@ changed AS (
         l_commitdate AS commit_date,
         l_receiptdate AS receipt_date
 
-    FROM source
-)
-SELECT * 
-FROM changed
+ from {{ source('src', 'lineitems') }}

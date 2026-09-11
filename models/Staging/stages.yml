@@ -16,16 +16,16 @@ models:
         data_tests:
           - accepted_values:
               arguments:
-                values: ['AFRICA', 'ASIA', 'EUROPE', 'AMERICA','']
+                values: ['AFRICA', 'ASIA', 'EUROPE', 'AMERICA']
               config:
                 store_failures: true
 
-  # - name: orders
-  #   columns:
-  #     - name: total_price
-  #       data_tests:
-  #         - order_value:
-  #             arguments:
-  #               val: 1000
-  #             config:
-  #               store_failures: true
+  - name: orders
+    columns:
+      - name: total_price
+        data_tests:
+          - order_value:
+              arguments:
+                val: 880
+              config:
+                store_failures: true

@@ -1,5 +1,4 @@
     select
-
         -- ids
         s_suppkey as supplier_id,
         s_nationkey as nation_id,
@@ -12,6 +11,7 @@
 
         -- amounts
         s_acctbal as account_balance,
+        S_NATIONKEY as nationkey,
         updated_time
 
     from {{ source('src', 'suppliers') }} supps 

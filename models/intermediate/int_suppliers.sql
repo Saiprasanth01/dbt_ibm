@@ -1,20 +1,23 @@
-{{ config(materialized='incremental') }}
 
-WITH supplier AS (
+--
+{{ config(materialized='incremental', unique_key='supplier_id',
+incremental_predicates = ['DBT_INTERNAL_SOURCE.account_balance > 9900']) }}
 
-    SELECT *
-    FROM {{ ref('stg_supplier') }}
+with supplier as (
 
+    select supplier_id, n.sname supplier_name, s.* exclude (supplier_id, supplier_name) 
+    from {{ ref('stg_supplier') }} s
+    join  ANALYTICS.DBT_SR.suppliers_name n on s.supplier_id = n.skey 
+    
     {% if is_incremental() %}
-
-    WHERE updated_time > (
-        SELECT MAX(updated_time)
-        FROM {{ this }}
+        where updated_time > (select max(updated_time) from {{ this }})
+    {% endif %}
     )
 
-    {% endif %}
+select * from supplier
 
-)
 
-SELECT *
-FROM supplier
+
+ 
+
+ 

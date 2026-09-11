@@ -10,15 +10,15 @@ models:
           - not_null
       - name: region_id
         description: Foreign key for this table
-  # - name: regions
-  #   columns:
-  #     - name: name
-  #       data_tests:
-  #         - accepted_values:
-  #             arguments:
-  #               values: ['AFRICA', 'ASIA', 'EUROPE', 'AMERICA','']
-  #             config:
-  #               store_failures: true
+  - name: regions
+    columns:
+      - name: name
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['AFRICA', 'ASIA', 'EUROPE', 'AMERICA','']
+              config:
+                store_failures: true
 
   # - name: orders
   #   columns:
